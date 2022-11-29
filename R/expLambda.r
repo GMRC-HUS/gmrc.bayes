@@ -17,7 +17,8 @@
 
 expLambda <- function(x){
   x <- as.integer(x)
-  n <- sum(!is.na(x))
-  sumX <- sum(x, na.rm=T)
+  x<- x[!is.na(x)]
+  n <- length(x)
+  sumX <- sum(x)
   return((sumX+1)/(n+1))
 }
