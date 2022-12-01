@@ -15,5 +15,5 @@
 #'
 #' @examples
 plot.oneMeanEstim <- function(obj, ...){
-  plotOneMeanEstim(obj)
+  plotOneMeanEstim(oneMeanEstimRes=obj,...)
 }

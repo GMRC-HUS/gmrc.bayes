@@ -22,3 +22,6 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    ggdist,
+    ggplot2

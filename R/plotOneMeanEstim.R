@@ -14,17 +14,24 @@
 #' @export
 #'
 #' @examples
-plotOneMeanEstim <- function(oneMeanEstimRes, twit=T, area=T){
-  if(dim(res$twit)[1]==0){
+plotOneMeanEstim <- function(oneMeanEstimRes, twit=T, area=T,xlim=NULL){
+  if(!is.null(xlim)&length(xlim)==2){
 
-  warning("Pas de Twit dans l'objet oneMeanEstimRes")
+    xlim<- c(xlim[1],xlim[2])
+  }else{
+  xlim<- c(lim_function_low(min(res$twit$low, res$Posterior$low[1])),
+             lim_function_up(max(res$twit$up, res$Posterior$up[1])))
+  }
+  if(is.null(xlim)&length(xlim)==2) warning("Length xlim should be 2, defaults values used")
+
+  if(dim(res$twit)[1]==0){
+  warning("No twit in oneMeanEstimRes")
     twit<-F
     area = F
     res$twit$low =res$Posterior$low[1]
     res$twit$up = res$Posterior$up[1]
   }
-  xlim<- c(lim_function_low(min(res$twit$low, res$Posterior$low[1])),
-           lim_function_up(max(res$twit$up, res$Posterior$up[1])))
+
 
   df = data.frame(x = seq(xlim[1],xlim[2],(xlim[2]-xlim[1])/1000))
   df$density=dstudent_t(df$x,
