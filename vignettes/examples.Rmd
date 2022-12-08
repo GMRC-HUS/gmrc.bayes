@@ -36,5 +36,16 @@ plotOneMeanEstim(oneMeanEstimRes = res)
 
 ```{r}
 plot(res)
+
+res<-oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu_0 = 0 ,kappa_0 = 1,alpha_0 = 0.005,beta_0 = 0.01,seuil = 10) 
+res$twit
+
+plotOneMeanEstim(oneMeanEstimRes = oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu_0 = 0 ,kappa_0 = 1,alpha_0 = 0.005,beta_0 = 0.01,seuil = 10) ,twit=F)
+```
+```{r}
+ifelse_perso <- function(log, x, y ){
+  if(log) return(x)
+  return(y)
+}
 ```
 

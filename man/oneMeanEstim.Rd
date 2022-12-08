@@ -14,8 +14,8 @@ oneMeanEstim(
   kappa_0,
   alpha_0,
   beta_0,
-  theta_P,
-  theta_A,
+  theta_P = NULL,
+  theta_A = NULL,
   seuil = 0
 )
 }

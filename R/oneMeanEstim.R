@@ -41,7 +41,7 @@
 #'
 #'
 #'
-oneMeanEstim <- function(X, alpha, mu_0, kappa_0, alpha_0, beta_0, theta_P, theta_A,
+oneMeanEstim <- function(X, alpha, mu_0, kappa_0, alpha_0, beta_0, theta_P=NULL, theta_A=NULL,
                    seuil=0){
 
   #theta sous forme de vecteur
@@ -84,10 +84,12 @@ oneMeanEstim <- function(X, alpha, mu_0, kappa_0, alpha_0, beta_0, theta_P, thet
                        low = c(R_moy[2],R_sigma[2]),
                        up = c(R_moy[3],R_sigma[3]),
                        IC=paste0("IC",round(1-alpha,2)*100))
+  if(!is.null(theta_P)){
   twit<- data.frame(interval = c("effet","absence effet"),
                     low = c(theta_P[1],theta_A[1]),
                     up = c(theta_P[2],theta_A[2]),
                     Prob=c(Pr_P, Pr_A))
+  }else{ twit <-NULL}
   res<- list(Posterior = res_pos,
               twit=twit,
               prob= c(seuil_effet =seuil ,

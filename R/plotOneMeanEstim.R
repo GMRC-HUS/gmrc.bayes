@@ -25,7 +25,7 @@ plotOneMeanEstim <- function(oneMeanEstimRes, twit=T, area=T,xlim=NULL){
   }
   if(is.null(xlim)&length(xlim)==2) warning("Length xlim should be 2, defaults values used")
 
-  if(dim(oneMeanEstimRes$twit)[1]==0){
+  if(is.null(oneMeanEstimRes$twit)){
   warning("No twit in oneMeanEstimRes")
     twit<-F
     area = F
