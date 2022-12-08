@@ -3,9 +3,9 @@
 # December 08 2022
 
 
-#' Define the credibility interval for a Poisson model
+#' Compute the credibility interval for a Poisson model
 #' @author JuG
-#' @description Define the credibility interval for a Poisson model
+#' @description Compute the credibility interval for a Poisson model
 #' @param x a vector of observations
 #' @param percentile a vector of length 2 defining the credibility intervalle lower and upper limits
 #' @details .
