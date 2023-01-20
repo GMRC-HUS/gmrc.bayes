@@ -7,30 +7,30 @@
 #' Graphique oneMeanEstim
 #'
 #' @param oneMeanEstimRes object return from oneMeanEstim
-#' @param twit Boolean to display twit
-#' @param area Boolean to display twit area
+#' @param twoIt Boolean to display twoIt
+#' @param area Boolean to display twoIt area
 #' @import ggplot2
 #' @importFrom ggdist pstudent_t qstudent_t
 #' @return
 #' @export
 #'
 #' @examples
-plotOneMeanEstim <- function(oneMeanEstimRes, twit=T, area=T,xlim=NULL){
+plotOneMeanEstim <- function(oneMeanEstimRes, twoIt=T, area=T,xlim=NULL){
   if(!is.null(xlim)&length(xlim)==2){
 
     xlim<- c(xlim[1],xlim[2])
   }else{
-  xlim<- c(lim_function_low(min(oneMeanEstimRes$twit$low, oneMeanEstimRes$Posterior$low[1])),
-             lim_function_up(max(oneMeanEstimRes$twit$up, oneMeanEstimRes$Posterior$up[1])))
+  xlim<- c(lim_function_low(min(oneMeanEstimRes$twoIt$low, oneMeanEstimRes$Posterior$low[1])),
+             lim_function_up(max(oneMeanEstimRes$twoIt$up, oneMeanEstimRes$Posterior$up[1])))
   }
   if(is.null(xlim)&length(xlim)==2) warning("Length xlim should be 2, defaults values used")
 
-  if(is.null(oneMeanEstimRes$twit)){
-  warning("No twit in oneMeanEstimRes")
-    twit<-F
+  if(is.null(oneMeanEstimRes$twoIt)){
+  warning("No two It in oneMeanEstimRes")
+    twoIt<-F
     area = F
-    oneMeanEstimRes$twit$low =oneMeanEstimRes$Posterior$low[1]
-    oneMeanEstimRes$twit$up = oneMeanEstimRes$Posterior$up[1]
+    oneMeanEstimRes$twoIt$low =oneMeanEstimRes$Posterior$low[1]
+    oneMeanEstimRes$twoIt$up = oneMeanEstimRes$Posterior$up[1]
   }
 
 
@@ -46,16 +46,16 @@ plotOneMeanEstim <- function(oneMeanEstimRes, twit=T, area=T,xlim=NULL){
     scale_color_manual(name = "",values=c('#999999'))+theme_light()+theme(legend.position="top")
 
 
-  if(twit) {
-    p1<-p1+ geom_vline(aes(xintercept = oneMeanEstimRes$twit$low[1],color="effet"),linetype="dashed" )+
-      geom_vline(aes(xintercept = oneMeanEstimRes$twit$up[1],color="effet"),linetype="dashed" )+
-      geom_vline(aes(xintercept = jitter(oneMeanEstimRes$twit$low[2]),color="absence effet"),linetype="dashed" )+
-      geom_vline(aes(xintercept = oneMeanEstimRes$twit$up[2],color="absence effet"),linetype="dashed" )+
+  if(twoIt) {
+    p1<-p1+ geom_vline(aes(xintercept = oneMeanEstimRes$twoIt$low[1],color="effet"),linetype="dashed" )+
+      geom_vline(aes(xintercept = oneMeanEstimRes$twoIt$up[1],color="effet"),linetype="dashed" )+
+      geom_vline(aes(xintercept = jitter(oneMeanEstimRes$twoIt$low[2]),color="absence effet"),linetype="dashed" )+
+      geom_vline(aes(xintercept = oneMeanEstimRes$twoIt$up[2],color="absence effet"),linetype="dashed" )+
       scale_color_manual(name="",values=c('#999999',"#40E0D0","#DE3163"))
   }
   if(area){
-    p1<- p1+annotate("rect",xmin=oneMeanEstimRes$twit$low[1], xmax=oneMeanEstimRes$twit$up[1], ymin=-Inf, ymax=Inf,fill ="#40E0D0" , alpha = 0.2)+
-      annotate("rect",xmin=oneMeanEstimRes$twit$low[2], xmax=oneMeanEstimRes$twit$up[2], ymin=-Inf, ymax=Inf,fill ="#DE3163" , alpha = 0.2)
+    p1<- p1+annotate("rect",xmin=oneMeanEstimRes$twoIt$low[1], xmax=oneMeanEstimRes$twoIt$up[1], ymin=-Inf, ymax=Inf,fill ="#40E0D0" , alpha = 0.2)+
+      annotate("rect",xmin=oneMeanEstimRes$twoIt$low[2], xmax=oneMeanEstimRes$twoIt$up[2], ymin=-Inf, ymax=Inf,fill ="#DE3163" , alpha = 0.2)
   }
 
   return(p1)

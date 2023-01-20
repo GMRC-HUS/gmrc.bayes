@@ -4,14 +4,14 @@
 \alias{plotOneMeanEstim}
 \title{Graphique oneMeanEstim}
 \usage{
-plotOneMeanEstim(oneMeanEstimRes, twit = T, area = T, xlim = NULL)
+plotOneMeanEstim(oneMeanEstimRes, twoIt = T, area = T, xlim = NULL)
 }
 \arguments{
 \item{oneMeanEstimRes}{object return from oneMeanEstim}
 
-\item{twit}{Boolean to display twit}
+\item{twoIt}{Boolean to display twoIt}
 
-\item{area}{Boolean to display twit area}
+\item{area}{Boolean to display twoIt area}
 }
 \description{
 Graphique oneMeanEstim

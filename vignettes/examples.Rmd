@@ -23,12 +23,12 @@ library(ggdist)
 # norm_B
 
 ```{r}
-oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu_0 = 0 ,kappa_0 = 1,alpha_0 = 0.005,beta_0 = 0.01,seuil = 10,theta_P = c(-10,5),theta_A = c(5,12)) 
+oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu = 0 ,kappa_0 = 1,sigma_0 = 0.005,nu = 0.01,seuil = 10,theta_P = c(-10,5),theta_A = c(5,12)) 
 ```
 
 ```{r}
-res<-oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu_0 = 0 ,kappa_0 = 1,alpha_0 = 0.005,beta_0 = 0.01,seuil = 10,theta_P = c(-10,5),theta_A = c(5,12)) 
-res$twit
+res<-oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu = 0 ,kappa_0 = 1,sigma_0 = 0.005,nu = 0.01,seuil = 10,theta_P = c(-10,5),theta_A = c(5,12)) 
+res$twoIt
 
 plotOneMeanEstim(oneMeanEstimRes = res)
 
@@ -37,11 +37,16 @@ plotOneMeanEstim(oneMeanEstimRes = res)
 ```{r}
 plot(res)
 
-res<-oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu_0 = 0 ,kappa_0 = 1,alpha_0 = 0.005,beta_0 = 0.01,seuil = 10) 
-res$twit
-
-plotOneMeanEstim(oneMeanEstimRes = oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu_0 = 0 ,kappa_0 = 1,alpha_0 = 0.005,beta_0 = 0.01,seuil = 10) ,twit=F)
 ```
+
+
+```{r}
+res<-oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu = 0 ,kappa_0 = 1,sigma_0 = 0.005,nu = 0.01,seuil = 10) 
+res$twoIt
+
+plotOneMeanEstim(oneMeanEstimRes = oneMeanEstim(rnorm(97,10,15),alpha = 0.15,mu = 0 ,kappa_0 = 1,sigma_0 = 0.005,nu = 0.1,seuil = 10) ,twoIt=F)
+```
+
 ```{r}
 ifelse_perso <- function(log, x, y ){
   if(log) return(x)
