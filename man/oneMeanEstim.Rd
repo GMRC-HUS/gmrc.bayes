@@ -9,43 +9,38 @@ sauf si supposée connue (=cas rare)}
 \usage{
 oneMeanEstim(
   X,
-  mu,
+  alpha,
+  mu_0,
   kappa_0,
-  nu,
-  sigma_0,
-  alpha = 0.05,
+  alpha_0,
+  beta_0,
   theta_P = NULL,
   theta_A = NULL,
   seuil = 0
 )
 }
 \arguments{
-\item{X}{A vector of data values.}
+\item{X}{Variable continue}
 
-\item{mu}{The prior mean of the population.}
+\item{alpha}{Pour le calcul de l'IC}
 
-\item{kappa_0}{A value related to the prior precision (inverse variance) of mu}
+\item{kappa_0}{?}
 
-\item{nu}{A value related to the prior precision of sigman_0}
-
-\item{sigma_0}{The prior sd of standard deviation of the population.}
-
-\item{alpha}{The level of the credibility interval}
+\item{alpha_0}{Prior sd}
 
 \item{theta_P}{Bornes inf 2IT}
 
 \item{theta_A}{Bornes sup 2IT}
 
-\item{seuil}{A threshold value for the probability calculation.
-mu|sigma2 ~ dnorm(mu, sigma2/kappa_0) kappa_0=taille pseudo-échantillon
+\item{seuil}{mu|sigma2 ~ dnorm(mu_0, sigma2/kappa_0) kappa_0=taille pseudo-échantillon
 tau ~ dgamma(alpha_0/2, beta_0/2)
 tau ~ dgamma(alpha_n, beta_n)
 alpha_n=(alpha_0+n)/2
 beta_n=(beta_0+BSSE)/2
-BSSE=(n-1)s² + n kappa_0(mu - y.bar)²/(n+kappa_0)
+BSSE=(n-1)s² + n kappa_0(mu_0 - y.bar)²/(n+kappa_0)
 library(ggdist)
 mu ~ student(mu_n, v_n, ddl)
-mu_n=mu kappa_0/(kapa_0+n) + y.bar n/(kappa_0+n)
+mu_n=mu_0 kappa_0/(kapa_0+n) + y.bar n/(kappa_0+n)
 v_n=beta_n/alpha_n/(n+kappa_0)
 ddl_n=2 alpha_n
 Résumé: p50 \link{p2.5; p97.5} mu et sigma=1/sqrt(tau)
